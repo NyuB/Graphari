@@ -1,5 +1,5 @@
 # Graphari
-## Graph Algorithms Implemented with Apache Giraph
+## Graph algorithms implemented with Apache Giraph
 ### INSA Toulouse SDBD Project
 ### Community detection algorithms applied to large graphs
 ### SDBD B2-1

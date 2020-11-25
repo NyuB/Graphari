@@ -14,16 +14,21 @@ Prototyped on the following configuration
   + 1.8 (specified in pom.xml)
 - Hadoop : 
   + 0.20
+- Maven
+  + 3.6
 
 ### Installation
 
-Follow the Apache Giraph QuickStart guide with the following warnings/modifications :
+####Follow the Apache Giraph QuickStart guide 
+https://giraph.apache.org/quick_start.html
+####With the following warnings/modifications :
 
-- Maven
- + the version anterior to 3.2.3 still uses http to download from maven central, which is not supported since 15/01/2020 (see -> https://support.sonatype.com/hc/en-us/articles/360041287334 )
- + install 3.2.3 or higher (tested with 3.6)
 - Java
   + Install jdk 8 or higher
+- Maven
+ + the versions anterior to 3.2.3 still use http to download from maven central, which is not supported since 15/01/2020 (see -> https://support.sonatype.com/hc/en-us/articles/360041287334 )
+ + install 3.2.3 or higher (tested with 3.6)
+ + OR apply the following modification to your maven user settings (most voted response) : https://stackoverflow.com/questions/25393298/what-is-the-correct-way-of-forcing-maven-to-use-https-for-maven-central/59784045#59784045
 - Giraph : 
   + If you are compiling this project you do not need to clone Giraph as indicated in the repo.
   + You can still clone and build Giraph origin repo (in particular to access giraph-examples as this project only includes giraph-core)
@@ -52,6 +57,8 @@ hadoop jar my_giraph_project_jar giraph_runner my_giraph_project_computation_cla
 + options -eif and -eip are availables with the same meanings as vif and vip applied to edges
 + option -op (Output Path) specify the directory(in HDFS) where our computation infos and results will be stored
 + option -w indique le nombre de workers/thread alloué à cette computation
+
+Note on the quickstart example : the given description isn't accurate, as this job computes the shortest paths from node 1 instead of the first node appearing in the graph input file.
 
 #### Output
 

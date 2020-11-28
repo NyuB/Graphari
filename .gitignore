@@ -1,5 +1,8 @@
 # IntelliJ project files
 .idea
 *.iml
+# Sublime Text project files
+*.sublime-project
+*.sublime-workspace
 # Maven Build output
 target

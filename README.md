@@ -56,7 +56,8 @@ hadoop jar my_giraph_project_jar giraph_runner my_giraph_project_computation_cla
 + option -vof (Vertex Output Format) same as vif but for convrting vertextes to output result file.
 + options -eif and -eip are availables with the same meanings as vif and vip applied to edges
 + option -op (Output Path) specify the directory(in HDFS) where our computation infos and results will be stored
-+ option -w indique le nombre de workers/thread alloué à cette computation
++ option -mc is available to specify a MasterCompute (orchestrator) class to use 
++ option -w indique le nombre de workers/thread alloué à cette computation (hadoop option)
 
 Note on the quickstart example : the given description isn't accurate, as this job computes the shortest paths from node 1 instead of the first node appearing in the graph input file.
 
@@ -64,9 +65,9 @@ Note on the quickstart example : the given description isn't accurate, as this j
 
 TO BE COMPLETED
 
-### Code
+### Algorithms and examples available in this project:
 
-#### Vertex, Edges
-
-#### Computation and vertex POV :
-
+- reversion : classes to perform graph reversion
+	+ vertex format : Long,Long,Double nodes 
+	+ computation class : any
+	+ master-compute : insa.sdbd.community.reversion.GraphReversionMasterCompute

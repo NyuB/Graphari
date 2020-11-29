@@ -1,5 +1,6 @@
 package insa.sdbd.community.reversion;
 
+
 import org.apache.giraph.edge.Edge;
 import org.apache.giraph.graph.BasicComputation;
 import org.apache.giraph.graph.Vertex;

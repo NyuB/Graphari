@@ -61,9 +61,6 @@ hadoop jar my_giraph_project_jar giraph_runner my_giraph_project_computation_cla
 
 Note on the quickstart example : the given description isn't accurate, as this job computes the shortest paths from node 1 instead of the first node appearing in the graph input file.
 
-#### Output
-
-TO BE COMPLETED
 
 ### Algorithms and examples available in this project:
 

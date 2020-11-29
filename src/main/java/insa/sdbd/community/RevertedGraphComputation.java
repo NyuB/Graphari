@@ -15,12 +15,11 @@ import java.util.HashSet;
 
 public class RevertedGraphComputation extends BasicComputation<LongWritable, LongWritable, DoubleWritable, LongDoubleWritable> {
 
-	private static Logger LOG = Logger.getLogger(RevertedGraphComputation.class);
-
 	@Override
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
 		if(getSuperstep() == 0){
 			HashSet<Long> ids = new HashSet<>();
+
 
 			for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 				sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(vertex.getId().get(),edge.getValue().get()));

@@ -22,5 +22,8 @@ public class SCCCheckComponentComputation extends BasicComputation<LongWritable,
 			aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 			aggregate(SCCMasterComputation.CURRENT_VERTEX_AGG, vertex.getId());
 		}
+		else {
+			vertex.voteToHalt();
+		}
 	}
 }

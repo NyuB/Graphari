@@ -14,10 +14,9 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 public class SCCBackwardComputation extends BasicComputation<LongWritable, LongWritable, DoubleWritable, LongDoubleWritable> {
-	private static Logger logger = Logger.getLogger(SCCBackwardComputation.class);
+	
 	@Override
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
-		logger.info(String.format("#### Computing at step [%d] vertex [%d]", getSuperstep(), vertex.getId().get()));
 		if(vertex.getValue().get() == SCCMasterComputation.VERTEX_REACHED){
 			LongWritable rootId = getAggregatedValue(SCCMasterComputation.CURRENT_VERTEX_AGG);
 			if(vertex.getId().get() == rootId.get()){

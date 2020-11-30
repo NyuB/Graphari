@@ -25,11 +25,17 @@ public class VertexWithLongValueDoubleEdgeTextOutput extends TextVertexOutputFor
 			res.append(" ");
 			res.append(vertex.getValue().get());
 			res.append(" [");
+			boolean start = true;
 			for (Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
+				if(!start){
+					res.append(", ");
+				}
+				start = false;
+				res.append("[");
 				res.append(edge.getTargetVertexId().get());
-				res.append(" (");
+				res.append(", ");
 				res.append(edge.getValue().get());
-				res.append("), ");
+				res.append("]");
 			}
 			res.append("]");
 			getRecordWriter().write(new Text(res.toString()), null);

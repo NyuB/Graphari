@@ -1,5 +1,6 @@
 #Convert from http://snap.stanford.edu/mappr/data.html format
 #to JsonLongLongDoubleTextInputFormat
+
 import sys
 
 filename = sys.argv[1]

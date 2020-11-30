@@ -30,8 +30,8 @@ https://giraph.apache.org/quick_start.html
  + install 3.2.3 or higher (tested with 3.6)
  + OR apply the following modification to your maven user settings (most voted response) : https://stackoverflow.com/questions/25393298/what-is-the-correct-way-of-forcing-maven-to-use-https-for-maven-central/59784045#59784045
 - Giraph : 
-  + If you are compiling this project you do not need to clone Giraph as indicated in the repo.
-  + You can still clone and build Giraph origin repo (in particular to access giraph-examples as this project only includes giraph-core)
+  + If you are compiling this project you do not need to clone Giraph as indicated in the quickstart.
+  + You can still clone and build Giraph original repository (in particular to access giraph-examples and environment scripts as this project only includes giraph-core)
   + When cloning, take care of checking out to a release branch before build
   
 ### Using Giraph:

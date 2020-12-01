@@ -27,7 +27,6 @@ public class SCCMasterComputation extends DefaultMasterCompute {
 
 	public static String PHASE_AGG = "insa.sdbd.community.scc.PHASE_AGG";
 	public static String CURRENT_VERTEX_AGG = "insa.sdbd.community.scc.CURRENT_VERTEX_AGG";
-	public static String VERTEX_NOT_CLASSIFIED_AGG = "insa.sdbd.community.scc.VERTEX_NOT_CLASSIFIED_AGG";
 	public static String VERTEX_UPDATED_AGG = "insa.sdbd.community.scc.VERTEX_UPDATED_AGG";
 	private static Logger logger = Logger.getLogger(SCCMasterComputation.class);
 
@@ -39,8 +38,6 @@ public class SCCMasterComputation extends DefaultMasterCompute {
 		registerPersistentAggregator(PHASE_AGG, LongOverwriteAggregator.class);
 
 		registerPersistentAggregator(CURRENT_VERTEX_AGG, LongMinAggregator.class);
-
-		registerAggregator(VERTEX_NOT_CLASSIFIED_AGG, BooleanOrAggregator.class);
 
 		registerAggregator(VERTEX_UPDATED_AGG, BooleanOrAggregator.class);
 	}
@@ -122,6 +119,9 @@ public class SCCMasterComputation extends DefaultMasterCompute {
 			setAggregatedValue(CURRENT_VERTEX_AGG, new LongWritable(Long.MAX_VALUE));//Reset current vertex
 			setComputation(SCCCheckComponentComputation.class);
 			phase = PHASE_CHECK;
+		}
+		else if( 2 > 3 ){
+			phase = -1L;
 		}
 		//Safety else, should not happen
 		else{

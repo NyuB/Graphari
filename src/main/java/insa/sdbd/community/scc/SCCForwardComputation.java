@@ -8,15 +8,20 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.giraph.writable.tuple.LongDoubleWritable;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 
 public class SCCForwardComputation extends BasicComputation<LongWritable, LongWritable, DoubleWritable, LongDoubleWritable> {
+	private static Logger logger = Logger.getLogger(SCCForwardComputation.class);
+	
 	@Override
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
 
 		if(vertex.getValue().get() == SCCMasterComputation.VERTEX_INIT){
 			LongWritable rootId = getAggregatedValue(SCCMasterComputation.CURRENT_VERTEX_AGG);
 			if(vertex.getId().get() == rootId.get()){
+				logger.info("\n\n"+"Root vertex in forward phase for "+rootId.get()+"\n\n");
 				vertex.setValue(new LongWritable(SCCMasterComputation.VERTEX_REACHED));
 				aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 				for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {

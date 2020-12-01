@@ -23,12 +23,12 @@ Prototyped on the following configuration
 https://giraph.apache.org/quick_start.html
 #### With the following warnings/modifications :
 
-- Java
+- Java :
   + Install jdk 8 or higher
-- Maven
- + the versions anterior to 3.2.3 still use http to download from maven central, which is not supported since 15/01/2020 (see -> https://support.sonatype.com/hc/en-us/articles/360041287334 )
- + install 3.2.3 or higher (tested with 3.6)
- + OR apply the following modification to your maven user settings (most voted response) : https://stackoverflow.com/questions/25393298/what-is-the-correct-way-of-forcing-maven-to-use-https-for-maven-central/59784045#59784045
+- Maven :
+  + the versions anterior to 3.2.3 still use http to download from maven central, which is not supported since 15/01/2020 (see -> https://support.sonatype.com/hc/en-us/articles/360041287334 )
+  + install 3.2.3 or higher (tested with 3.6)
+  + OR apply the following modification to your maven user settings (most voted response) : https://stackoverflow.com/questions/25393298/what-is-the-correct-way-of-forcing-maven-to-use-https-for-maven-central/59784045#59784045
 - Giraph : 
   + If you are compiling this project you do not need to clone Giraph as indicated in the quickstart.
   + You can still clone and build Giraph original repository (in particular to access giraph-examples and environment scripts as this project only includes giraph-core)

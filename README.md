@@ -44,22 +44,23 @@ $HADOOP_HOME/bin/hadoop jar $GIRAPH_HOME/giraph-examples/target/giraph-examples-
 
 ```
 #skeleton
-hadoop jar my_giraph_project_jar giraph_runner my_giraph_project_computation_class -vif graphFormat -vip graphHdfsPath -of resultFormat -op resultHdfsPath
+hadoop jar my_giraph_project_jar giraph_runner my_giraph_computation_class -options
 ```
 
 + We are 'only' executing Hadoop -> Giraph consists Java Libraries built on top of hadoop MapReduce Java API, offering possibilities to run graph computations as Hadoop Jobs
 + We are targeting a jar, containing at least giraph-core, plus our classes and additionnal libraries. The extension correspond to the maven denomination of a project output archived with all libraries (renaming in a more concise way after maven build is possible :P )
 + We are using Giraph Runner as the target class for hadoop in this jar, then the following arguments are passed to this Runner.
 + We indicate the classes of our Computation implementation, our logic core.
++ option -mc is available to specify a MasterCompute (orchestrator) class to use
 + option -vif (Vertex Input Format) designates a class in the jar and indicates how our input graph is encoded. This class should extend/implement one of the inputformat classes/interfaces provided by Giraph-core accordingly to our Vertexes nature
 + option -vip (Vertex Input Path) indicates where(in HDFS) our input graph is located/distributed
 + option -vof (Vertex Output Format) same as vif but for convrting vertextes to output result file.
 + options -eif and -eip are availables with the same meanings as vif and vip applied to edges
 + option -op (Output Path) specify the directory(in HDFS) where our computation infos and results will be stored
-+ option -mc is available to specify a MasterCompute (orchestrator) class to use 
-+ option -w indicate the number of workers/threads allocated to this computation (hadoop option)
++ option -w indicate the number of workers/node allocated to this computation
++ option -ca name=value,name2=value2,name3=value3... allow to specify custom option available via ConfOption API
 
-Note on the quickstart example : the given description isn't accurate, as this job computes the shortest paths from node 1 instead of the first node appearing in the graph input file.
+Note on the quickstart example : the given description isn't accurate, as this job computes the shortest paths from node 1 by default and not the first node appearing in the graph input file. The root node can be defined by setting the custom argument 
 
 
 ### Algorithms and examples available in this project:

@@ -10,35 +10,20 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 
 import java.io.IOException;
 
-public class VertexWithLongValueDoubleEdgeTextOutput extends TextVertexOutputFormat<LongWritable, LongWritable, DoubleWritable> {
+public class VertexWithLongValueTextOutput extends TextVertexOutputFormat<LongWritable, LongWritable, DoubleWritable> {
 	@Override
 	public TextVertexWriter createVertexWriter(TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
 		//TODO
-		return new VertexWithLongValueDoubleEdgesWriter();
+		return new VertexWithLongValueWriter();
 	}
 
-	class VertexWithLongValueDoubleEdgesWriter extends TextVertexWriter{
+	class VertexWithLongValueWriter extends TextVertexWriter{
 		@Override
 		public void writeVertex(Vertex<LongWritable, LongWritable, DoubleWritable> vertex) throws IOException, InterruptedException {
 			StringBuilder res = new StringBuilder();
-			res.append("[");
 			res.append(vertex.getId().get());
-			res.append(", ");
+			res.append(" ");
 			res.append(vertex.getValue().get());
-			res.append(", [");
-			boolean start = true;
-			for (Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
-				if(!start){
-					res.append(", ");
-				}
-				start = false;
-				res.append("[");
-				res.append(edge.getTargetVertexId().get());
-				res.append(", ");
-				res.append(edge.getValue().get());
-				res.append("]");
-			}
-			res.append("]]");
 			getRecordWriter().write(new Text(res.toString()), null);
 
 		}

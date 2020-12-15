@@ -1,4 +1,4 @@
-package insa.sdbd.community;
+package insa.sdbd.community.labo;
 
 import org.apache.giraph.Algorithm;
 import org.apache.giraph.edge.Edge;

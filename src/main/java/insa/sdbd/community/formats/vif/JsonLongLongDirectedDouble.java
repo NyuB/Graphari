@@ -1,4 +1,4 @@
-package insa.sdbd.community;
+package insa.sdbd.community.formats.vif;
 
 
 import com.google.common.collect.Lists;
@@ -16,7 +16,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
-public class JsonLongLongDoubleVertexInputFormat extends TextVertexInputFormat<LongWritable, LongWritable, DoubleWritable> {
+public class JsonLongLongDirectedDouble extends TextVertexInputFormat<LongWritable, LongWritable, DoubleWritable> {
 	@Override
 	public TextVertexReader createVertexReader(InputSplit inputSplit, TaskAttemptContext taskAttemptContext) throws IOException {
 		//TODO

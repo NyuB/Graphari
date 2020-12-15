@@ -1,4 +1,4 @@
-package insa.sdbd.community;
+package insa.sdbd.community.labo;
 
 import org.apache.giraph.edge.Edge;
 import org.apache.giraph.edge.EdgeFactory;
@@ -19,8 +19,6 @@ public class RevertedGraphComputation extends BasicComputation<LongWritable, Lon
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
 		if(getSuperstep() == 0){
 			HashSet<Long> ids = new HashSet<>();
-
-
 			for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 				sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(vertex.getId().get(),edge.getValue().get()));
 				ids.add(edge.getTargetVertexId().get());
@@ -34,9 +32,7 @@ public class RevertedGraphComputation extends BasicComputation<LongWritable, Lon
 				Edge<LongWritable, DoubleWritable> newEdge = EdgeFactory.create(msg.getLeft(),msg.getRight());
 				vertex.addEdge(newEdge);
 			}
-
 		}
 		vertex.voteToHalt();
-
 	}
 }

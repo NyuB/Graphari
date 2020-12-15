@@ -120,9 +120,6 @@ public class SCCMasterComputation extends DefaultMasterCompute {
 			setComputation(SCCCheckComponentComputation.class);
 			phase = PHASE_CHECK;
 		}
-		else if( 2 > 3 ){
-			phase = -1L;
-		}
 		//Safety else, should not happen
 		else{
 			logger.info(String.format("#### At superstep [%d] halt computation ERROR", getSuperstep()));

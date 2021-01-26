@@ -18,12 +18,12 @@ public class SCCBackwardComputation extends BasicComputation<LongWritable, LongW
 
 	@Override
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
-		if(vertex.getValue().get() == SCCMasterComputation.VERTEX_REACHED){
-			LongWritable rootId = getAggregatedValue(SCCMasterComputation.CURRENT_VERTEX_AGG);
+		if(vertex.getValue().get() == SCCMasterCompute.VERTEX_REACHED){
+			LongWritable rootId = getAggregatedValue(SCCMasterCompute.CURRENT_VERTEX_AGG);
 			if(vertex.getId().get() == rootId.get()){
 				logger.info("\n\n"+"Root vertex in backward phase for "+rootId.get()+"\n\n");
 				vertex.setValue(rootId);
-				aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
+				aggregate(SCCMasterCompute.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 				for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 					sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(0L, 0.0));
 				}
@@ -34,7 +34,7 @@ public class SCCBackwardComputation extends BasicComputation<LongWritable, LongW
 					if(!send){
 						send = true;
 						vertex.setValue(rootId);
-						aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
+						aggregate(SCCMasterCompute.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 						for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 							sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(0L, 0.0));
 						}

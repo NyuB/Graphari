@@ -1,7 +1,7 @@
 package insa.sdbd.community.formats.vif;
 
-
 import com.google.common.collect.Lists;
+import insa.sdbd.community.LabelInOut;
 import org.apache.giraph.edge.Edge;
 import org.apache.giraph.edge.EdgeFactory;
 import org.apache.giraph.io.formats.TextVertexInputFormat;
@@ -16,14 +16,13 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
-public class JsonLongLongDirectedDouble extends TextVertexInputFormat<LongWritable, LongWritable, DoubleWritable> {
+public class JsonLongTriplongDirectedDouble extends TextVertexInputFormat<LongWritable, LabelInOut, DoubleWritable> {
 	@Override
 	public TextVertexReader createVertexReader(InputSplit inputSplit, TaskAttemptContext taskAttemptContext) throws IOException {
-		//TODO
-		return new JsonLongLongDoubleVertexReader();
+		return new JsonLongTriplongDoubleVertexReader();
 	}
 
-	private class JsonLongLongDoubleVertexReader extends TextVertexReaderFromEachLineProcessedHandlingExceptions<JSONArray,
+	private class JsonLongTriplongDoubleVertexReader extends TextVertexReaderFromEachLineProcessedHandlingExceptions<JSONArray,
 			JSONException> {
 		@Override
 		protected JSONArray preprocessLine(Text text) throws JSONException, IOException {
@@ -37,8 +36,9 @@ public class JsonLongLongDirectedDouble extends TextVertexInputFormat<LongWritab
 		}
 
 		@Override
-		protected LongWritable getValue(JSONArray jsonArray) throws JSONException, IOException {
-			return new LongWritable(jsonArray.getLong(1));
+		protected LabelInOut getValue(JSONArray jsonArray) throws JSONException, IOException {
+			LabelInOut res = new LabelInOut();
+			return res;
 		}
 
 		@Override

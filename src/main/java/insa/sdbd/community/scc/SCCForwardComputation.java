@@ -18,12 +18,12 @@ public class SCCForwardComputation extends BasicComputation<LongWritable, LongWr
 	@Override
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
 
-		if(vertex.getValue().get() == SCCMasterComputation.VERTEX_INIT){
-			LongWritable rootId = getAggregatedValue(SCCMasterComputation.CURRENT_VERTEX_AGG);
+		if(vertex.getValue().get() == SCCMasterCompute.VERTEX_INIT){
+			LongWritable rootId = getAggregatedValue(SCCMasterCompute.CURRENT_VERTEX_AGG);
 			if(vertex.getId().get() == rootId.get()){
 				logger.info("\n\n"+"Root vertex in forward phase for "+rootId.get()+"\n\n");
-				vertex.setValue(new LongWritable(SCCMasterComputation.VERTEX_REACHED));
-				aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
+				vertex.setValue(new LongWritable(SCCMasterCompute.VERTEX_REACHED));
+				aggregate(SCCMasterCompute.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 				for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 					sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(0L, 0.0));
 				}
@@ -33,8 +33,8 @@ public class SCCForwardComputation extends BasicComputation<LongWritable, LongWr
 				for(LongDoubleWritable msg : iterable){
 					if(!send){
 						send = true;
-						vertex.setValue(new LongWritable(SCCMasterComputation.VERTEX_REACHED));
-						aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
+						vertex.setValue(new LongWritable(SCCMasterCompute.VERTEX_REACHED));
+						aggregate(SCCMasterCompute.VERTEX_UPDATED_AGG, new BooleanWritable(true));
 						for(Edge<LongWritable, DoubleWritable> edge : vertex.getEdges()) {
 							sendMessage(edge.getTargetVertexId(), new LongDoubleWritable(0L, 0.0));
 						}

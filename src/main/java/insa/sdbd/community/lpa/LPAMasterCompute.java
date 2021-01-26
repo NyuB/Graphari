@@ -7,8 +7,8 @@ import org.apache.hadoop.io.BooleanWritable;
 
 public class LPAMasterCompute extends DefaultMasterCompute {
 
-	public static String SHIFTED_AGG = "insa.sdbd.community.lpa.SHIFTED_AGG";
-	public static IntConfOption MAX_STEPS = new IntConfOption("insa.MAX_STEPS",150, "Maximum changes of community");
+	static String SHIFTED_AGG = "insa.sdbd.community.lpa.SHIFTED_AGG";
+	static IntConfOption MAX_STEPS = new IntConfOption("insa.MAX_STEPS",150, "Maximum changes of community");
 
 	@Override
 	public void initialize() throws InstantiationException, IllegalAccessException {

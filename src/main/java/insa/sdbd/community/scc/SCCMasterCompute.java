@@ -9,7 +9,7 @@ import org.apache.hadoop.io.LongWritable;
 
 import org.apache.log4j.Logger;
 
-public class SCCMasterComputation extends DefaultMasterCompute {
+public class SCCMasterCompute extends DefaultMasterCompute {
 
 
 	public static Long PHASE_FORWARD = 0L;
@@ -28,7 +28,7 @@ public class SCCMasterComputation extends DefaultMasterCompute {
 	public static String PHASE_AGG = "insa.sdbd.community.scc.PHASE_AGG";
 	public static String CURRENT_VERTEX_AGG = "insa.sdbd.community.scc.CURRENT_VERTEX_AGG";
 	public static String VERTEX_UPDATED_AGG = "insa.sdbd.community.scc.VERTEX_UPDATED_AGG";
-	private static Logger logger = Logger.getLogger(SCCMasterComputation.class);
+	private static Logger logger = Logger.getLogger(SCCMasterCompute.class);
 
 	private Long phase = PHASE_CHECK;
 

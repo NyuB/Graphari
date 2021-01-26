@@ -5,7 +5,6 @@ import org.apache.giraph.graph.Vertex;
 import org.apache.hadoop.io.BooleanWritable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
 import org.apache.giraph.writable.tuple.LongDoubleWritable;
 
 import java.io.IOException;
@@ -19,17 +18,17 @@ public class SCCCheckComponentComputation extends BasicComputation<LongWritable,
 	public void compute(Vertex<LongWritable, LongWritable, DoubleWritable> vertex, Iterable<LongDoubleWritable> iterable) throws IOException {
 		
 		if(getSuperstep() == 0){
-			vertex.setValue(new LongWritable(SCCMasterComputation.VERTEX_INIT));
+			vertex.setValue(new LongWritable(SCCMasterCompute.VERTEX_INIT));
 		}
 
-		if((vertex.getValue().get() == SCCMasterComputation.VERTEX_INIT) || (vertex.getValue().get() == SCCMasterComputation.VERTEX_REACHED)) {
+		if((vertex.getValue().get() == SCCMasterCompute.VERTEX_INIT) || (vertex.getValue().get() == SCCMasterCompute.VERTEX_REACHED)) {
 			if(vertex.getNumEdges() == 0){
 				vertex.setValue(vertex.getId());
 			}
 			else{
-				vertex.setValue(new LongWritable(SCCMasterComputation.VERTEX_INIT));
-				aggregate(SCCMasterComputation.VERTEX_UPDATED_AGG, new BooleanWritable(true));
-				aggregate(SCCMasterComputation.CURRENT_VERTEX_AGG, vertex.getId());
+				vertex.setValue(new LongWritable(SCCMasterCompute.VERTEX_INIT));
+				aggregate(SCCMasterCompute.VERTEX_UPDATED_AGG, new BooleanWritable(true));
+				aggregate(SCCMasterCompute.CURRENT_VERTEX_AGG, vertex.getId());
 			}
 		}
 		else {

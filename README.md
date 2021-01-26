@@ -74,5 +74,5 @@ Logic followed for MasterCompute : When a MasterCompute class is used( -mc optio
 	
 - scc : classes to perform Strongly Connected Component Association Algorithm
 	+ vertex format : Long, Long, Double
-	+ master-compute class:  insa.sdbd.community.scc.SCCMasterComputation
+	+ master-compute class:  insa.sdbd.community.scc.SCCMasterCompute
 	+ output : vertexID, value(min ID among the vertex's component), edges(identical to origin)
